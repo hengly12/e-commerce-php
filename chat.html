@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agrina</title>
+
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/main.css" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <link href="assets/css/select2.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/css/chatBot.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+    <!-- Chat Bot -->
+    <div class="chat-screen show-chat">
+        <div class="chat-header">
+            <div class="chat-header-title">
+                <img src="assets/images/agrina_avatar.png" alt="Chatbot avatar" width="20"> Let’s chat? - We're online
+            </div>
+
+        </div>
+        <!-- Welcome Screen -->
+        <div class="chat-mail">
+            
+            <div class="row">
+                <div class="col-md-12 text-center mb-2">
+                    <img src="assets/images/agrina_avatar.png" alt="Chatbot avatar" width="50">
+                    <p>Hi 👋! I am Agrina Your 24<sub>/7</sub> Chat Assistant, Click on start chat to with me and clear your queries</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button id="start-chat-btn"  class="btn btn-primary btn-rounded btn-block">Start Chat</button>
+                </div>
+               <div class="col-md-12">
+                   <div class="powered-by">Farm Commerce Store</div>
+               </div>
+            </div>
+
+        </div>
+        <!-- Welcome Screen End -->
+        <!-- Chat Window -->
+        <div class="chat-body hide">
+            <div class="chat-start"></div>
+            <div class="chat-bubble bot  welcome message">👋 Welcome to Farm Commerce Store! Ready to explore our fantastic range of products? Find what you need fast and easy. Happy shopping! 🛍️</div>
+            <div class="chat-bubble"  id="chatMessages">
+                <!-- Loader SVG -->
+    <div id="loader" class="chat-bubble bot" style="display: none;">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto;display: block;shape-rendering: auto;width: 43px;height: 20px;" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+            <circle cx="0" cy="44.1678" r="15" fill="#ffffff">
+                <animate attributeName="cy" calcMode="spline" keySplines="0 0.5 0.5 1;0.5 0 1 0.5;0.5 0.5 0.5 0.5" repeatCount="indefinite" values="57.5;42.5;57.5;57.5" keyTimes="0;0.3;0.6;1" dur="1s" begin="-0.6s"></animate>
+            </circle> 
+            <circle cx="45" cy="43.0965" r="15" fill="#ffffff">
+                <animate attributeName="cy" calcMode="spline" keySplines="0 0.5 0.5 1;0.5 0 1 0.5;0.5 0.5 0.5 0.5" repeatCount="indefinite" values="57.5;42.5;57.5;57.5" keyTimes="0;0.3;0.6;1" dur="1s" begin="-0.39999999999999997s"></animate>
+            </circle> 
+            <circle cx="90" cy="52.0442" r="15" fill="#ffffff">
+                <animate attributeName="cy" calcMode="spline" keySplines="0 0.5 0.5 1;0.5 0 1 0.5;0.5 0.5 0.5 0.5" repeatCount="indefinite" values="57.5;42.5;57.5;57.5" keyTimes="0;0.3;0.6;1" dur="1s" begin="-0.19999999999999998s"></animate>
+            </circle>
+        </svg>
+    </div>
+            </div>
+        </div>
+        <div class="chat-input hide">
+            <input type="text" id="userInput" placeholder="Type a message...">
+            <div class="input-action-icon">
+                <a id="sendMessage"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-send"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg></a>
+            </div>
+        </div>
+    </div>
+    <!-- Chatbot container end -->
+
+    <!-- Chat button -->
+    <div class="chat-bot-icon" id="chatButton">
+        <button id="toggleChat"><img src="assets/images/chaticon.svg"></button>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="assets/js/bot.js"></script>
+
+</body>
+</html>
