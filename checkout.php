@@ -137,7 +137,9 @@ if(isset($_POST['order']) || isset($_POST['payment_id'])){
 
       <input type="submit" name="order" id="submit-btn" class="btn <?= ($grand_total > 0)?'':'disabled'; ?>" value="Place Order">
       
-      <div id="paypal-button-container" style="display: none;"></div>
+      <div class="btn-pay">
+         <div id="paypal-button-container" style="display: none;"></div>
+      </div>
    </form>
 </section>
 
