@@ -137,6 +137,77 @@ include './chat.html';
 
 </section> -->
 
+<div class="container">
+        <section class="about-section">
+            <div class="about-image">
+                <img src="./images/pc-1.png" alt="Shop showcase">
+                <div class="love-bubble">❤️</div>
+            </div>
+            
+            <div class="content">
+                <h1 class="title">Who we are?</h1>
+                <p class="description">
+                    At our store, we provide exceptional quality products and outstanding customer service. 
+                    We take pride in offering unique selections and personalized shopping experiences.
+                </p>
+                <p class="description">
+                    We work not only to sell products but to build lasting relationships with our customers, 
+                    ensuring satisfaction with every purchase.
+                </p>
+
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <div class="stat-number">50k+</div>
+                        <div class="stat-label">Happy Customers</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">1000+</div>
+                        <div class="stat-label">Products Available</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">Customer Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="reviews-section">
+            <h2 class="title">Customer Reviews</h2>
+            
+            <div class="review-card">
+                <div class="review-header">
+                    <img src="./images/pic-2.png" alt="Reviewer" class="reviewer-avatar">
+                    <div>
+                        <h3>Sarah Johnson</h3>
+                        <div class="review-rating">★★★★★</div>
+                    </div>
+                </div>
+                <p class="review-content">
+                    Amazing quality products and exceptional customer service! The team went above 
+                    and beyond to help me find exactly what I was looking for. Will definitely be 
+                    shopping here again!
+                </p>
+                <div class="review-date">Posted 2 days ago</div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <img src="./images/pic-1.png" alt="Reviewer" class="reviewer-avatar">
+                    <div>
+                        <h3>Mike Thompson</h3>
+                        <div class="review-rating">★★★★★</div>
+                    </div>
+                </div>
+                <p class="review-content">
+                    The product selection is fantastic and the prices are very competitive. 
+                    Shipping was fast and everything arrived in perfect condition. Highly recommend!
+                </p>
+                <div class="review-date">Posted 1 week ago</div>
+            </div>
+        </section>
+
+
 <section class="home-products">
 
    <h1 class="heading">products</h1>
@@ -181,6 +252,57 @@ include './chat.html';
 </section>
 
 
+<div class="container">
+        <div class="product-grid">
+            <div class="product-info">
+                <span class="tag">FLAGSHIP</span>
+                
+                <h1 class="headline">Because the ultimate gaming experience demands ultimate performance.</h1>
+                
+                <div class="features">
+                    <div class="feature">
+                        <div class="feature-icon">⚡</div>
+                        <div class="feature-content">
+                            <h3>Raw Power</h3>
+                            <p>Equipped with the latest RTX 4090 and Intel i9, delivering unprecedented gaming performance.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature">
+                        <div class="feature-icon">❄️</div>
+                        <div class="feature-content">
+                            <h3>Advanced Cooling</h3>
+                            <p>Custom liquid cooling system ensures peak performance even during intense gaming sessions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-image">
+                <img src="./images/pc-2.png" alt="Gaming PC">
+                <div class="specs">
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <span class="spec-value">RTX 4090</span>
+                            <span class="spec-label">Graphics</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-value">Intel i9-13900K</span>
+                            <span class="spec-label">Processor</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-value">64GB DDR5</span>
+                            <span class="spec-label">RAM</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-value">4TB NVMe</span>
+                            <span class="spec-label">Storage</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
