@@ -39,50 +39,44 @@ include './chat.html';
 <div class="home-bg">
 
 <section class="home">
-
    <div class="swiper home-slider">
-   
-   <div class="swiper-wrapper">
-
-      <div class="swiper-slide slide">
-         <div class="image">
-            <img src="images/home-img-1.png" alt="">
+      <div class="swiper-wrapper">
+         <div class="swiper-slide slide">
+            <div class="image">
+               <img src="images/home-img-1.png" alt="">
+            </div>
+            <div class="content">
+               <span>upto 50% off</span>
+               <h3>latest smartphones</h3>
+            </div>
          </div>
-         <div class="content">
-            <span>upto 50% off</span>
-            <h3>latest smartphones</h3>
-            <a href="shop.php" class="btn">shop now</a>
+
+         <div class="swiper-slide slide">
+            <div class="image">
+               <img src="images/home-img-2.png" alt="">
+            </div>
+            <div class="content">
+               <span>upto 50% off</span>
+               <h3>latest watches</h3>
+            </div>
+         </div>
+
+         <div class="swiper-slide slide">
+            <div class="image">
+               <img src="images/home-img-3.png" alt="">
+            </div>
+            <div class="content">
+               <span>upto 50% off</span>
+               <h3>latest headsets</h3>
+            </div>
          </div>
       </div>
 
-      <div class="swiper-slide slide">
-         <div class="image">
-            <img src="images/home-img-2.png" alt="">
-         </div>
-         <div class="content">
-            <span>upto 50% off</span>
-            <h3>latest watches</h3>
-            <a href="shop.php" class="btn">shop now</a>
-         </div>
-      </div>
-
-      <div class="swiper-slide slide">
-         <div class="image">
-            <img src="images/home-img-3.png" alt="">
-         </div>
-         <div class="content">
-            <span>upto 50% off</span>
-            <h3>latest headsets</h3>
-            <a href="shop.php" class="btn">shop now</a>
-         </div>
-      </div>
-
-   </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
 
       <div class="swiper-pagination"></div>
-
    </div>
-
 </section>
 
 </div>
@@ -162,12 +156,11 @@ include './chat.html';
       <input type="hidden" name="name" value="<?= $fetch_product['name']; ?>">
       <input type="hidden" name="price" value="<?= $fetch_product['price']; ?>">
       <input type="hidden" name="image" value="<?= $fetch_product['image_01']; ?>">
-      <button class="fas fa-heart" type="submit" name="add_to_wishlist"></button>
-      <a href="quick_view.php?pid=<?= $fetch_product['id']; ?>" class="fas fa-eye"></a>
+      <a href="quick_view.php?pid=<?= $fetch_product['id']; ?>" class="fa-regular fa-eye"></a>
       <img src="uploaded_img/<?= $fetch_product['image_01']; ?>" alt="">
       <div class="name"><?= $fetch_product['name']; ?></div>
       <div class="flex">
-         <div class="price"><span>$</span><?= $fetch_product['price']; ?><span>/-</span></div>
+         <div class="price"><span>$</span><?= $fetch_product['price']; ?><span></span></div>
          <input type="number" name="qty" class="qty" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="1">
       </div>
       <input type="submit" value="add to cart" class="btn" name="add_to_cart">
@@ -196,7 +189,7 @@ include './chat.html';
 
 
 <?php include 'components/footer.php'; ?>
-
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 
 <script src="js/script.js"></script>
@@ -255,7 +248,40 @@ var swiper = new Swiper(".products-slider", {
    },
 });
 
+
+
+document.addEventListener("DOMContentLoaded", function () {
+      var swiperContainer = document.querySelector('.home-slider');
+
+      var swiper = new Swiper('.home-slider', {
+         loop: true,
+         autoplay: {
+            delay: 3000, 
+            disableOnInteraction: false 
+         },
+         navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+         },
+         pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+         },
+      });
+
+      document.querySelector('.toggle-btn').addEventListener('click', function () {
+         if (swiperContainer.style.display === 'none') {
+            swiperContainer.style.display = 'block';
+            swiper.autoplay.start();
+         } else {
+            swiperContainer.style.display = 'none';
+            swiper.autoplay.stop(); 
+         }
+      });
+   });
 </script>
+
+
 
 </body>
 </html>

@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700&display=swap');
 
 :root{
-   --main-color:#2980b9;
-   --orange:#f39c12;
+   --main-color:#1A73E8;
+   --orange: #92a6bb;
    --red:#e74c3c;
    --black:#333;
    --white:#fff;
@@ -44,7 +44,7 @@ html{
 }
 
 body{
-   background-color: var(--light-bg);
+   background-color: #f8f8f8;
 }
 
 section{
@@ -170,6 +170,15 @@ section{
 .header .flex .logo{
    font-size: 2.5rem;
    color:var(--black);
+   display: flex;
+   align-items: center;
+   gap: 5px;
+}
+
+.header .flex .logo img{
+   height: 60px;
+   width: 60px;
+   border-radius: 50%;
 }
 
 .header .flex .logo span{
@@ -209,7 +218,6 @@ section{
    background-color: var(--white);
    border-radius: .5rem;
    box-shadow: var(--box-shadow);
-   border:var(--border);
    padding:2rem;
    width: 30rem;
    padding-top: 1.2rem;
@@ -286,7 +294,6 @@ section{
 .category .slide{
    margin-bottom: 5rem;
    box-shadow: var(--box-shadow);
-   border:var(--border);
    text-align: center;
    padding:2rem;
    background: var(--white);
@@ -349,13 +356,19 @@ section{
    gap:1rem;
 }
 
+.header .flex #user-btn{
+   padding: 12px;
+   border-radius: 50%;
+   background-color: var(--light-bg);
+}
+
 .home-products .slide .flex .qty{
    width: 7rem;
    padding:1rem;
-   border:var(--border);
    font-size: 1.8rem;
    color:var(--black);
    border-radius: .5rem;
+   border: 1px solid var(--light-bg);
 }
 
 .home-products .slide .flex .price{
@@ -373,7 +386,6 @@ section{
    line-height: 4.2rem;
    font-size: 2rem;
    background-color: var(--white);
-   border:var(--border);
    border-radius: .5rem;
    text-align: center;
    color:var(--black);
@@ -407,7 +419,6 @@ section{
 .quick-view form{
    padding:2rem;
    border-radius: .5rem;
-   border:var(--border);
    background-color: var(--white);
    box-shadow: var(--box-shadow);
    margin-top: 1rem;
@@ -443,7 +454,6 @@ section{
    width: 10rem;
    object-fit: contain;
    padding:.5rem;
-   border:var(--border);
    cursor: pointer;
    transition: .2s linear;
 }
@@ -479,7 +489,6 @@ section{
 .quick-view form .row .flex .qty{
    width: 7rem;
    padding:1rem;
-   border:var(--border);
    font-size: 1.8rem;
    color:var(--black);
    border-radius: .5rem;
@@ -509,7 +518,6 @@ section{
    background-color: var(--white);
    box-shadow: var(--box-shadow);
    border-radius: .5rem;
-   border:var(--border);
    padding:2rem;
    overflow: hidden;
 }
@@ -530,7 +538,6 @@ section{
    line-height: 4.2rem;
    font-size: 2rem;
    background-color: var(--white);
-   border:var(--border);
    border-radius: .5rem;
    text-align: center;
    color:var(--black);
@@ -574,10 +581,10 @@ section{
 .products .box-container .box .flex .qty{
    width: 7rem;
    padding:1rem;
-   border:var(--border);
    font-size: 1.8rem;
    color:var(--black);
    border-radius: .5rem;
+   border: 1px solid var(--light-bg);
 }
 
 .products .box-container .box .flex .price{
@@ -590,7 +597,6 @@ section{
    background-color: var(--white);
    padding:2rem;
    border-radius: .5rem;
-   border:var(--border);
    box-shadow: var(--box-shadow);
    text-align: center;
    margin:0 auto;
@@ -661,7 +667,6 @@ section{
    background-color: var(--white);
    box-shadow: var(--box-shadow);
    border-radius: .5rem;
-   border:var(--border);
    margin-bottom: 5rem;
    user-select: none;
 }
@@ -705,7 +710,6 @@ section{
    background-color: var(--white);
    box-shadow: var(--box-shadow);
    border-radius: .5rem;
-   border:var(--border);
    max-width: 50rem;
    margin:0 auto;
 }
@@ -739,7 +743,6 @@ section{
 
 .search-form form input{
    width: 100%;
-   border:var(--border);
    border-radius: .5rem;
    background-color: var(--white);
    box-shadow: var(--box-shadow);
@@ -769,7 +772,6 @@ section{
    margin:0 auto;
    margin-top: 3rem;
    background-color: var(--white);
-   border:var(--border);
    border-radius: .5rem;;
    padding:2rem;
    text-align: center;
@@ -814,7 +816,6 @@ section{
    margin:0 auto;
    margin-top: 3rem;
    background-color: var(--white);
-   border:var(--border);
    border-radius: .5rem;;
    padding:2rem;
    text-align: center;
@@ -841,7 +842,6 @@ section{
    margin:1rem .5rem;
    font-size: 2rem;
    text-align: center;
-   border:var(--border);
    background-color: var(--white);
    box-shadow: var(--box-shadow);
    border-radius: .5rem;
@@ -878,7 +878,7 @@ section{
 
 .checkout-orders form h3{
    border-radius: .5rem;
-   background-color: var(--black);
+   background-color: var(--main-color);
    color:var(--white);
    padding:1.5rem 1rem;
    text-align: center;
@@ -900,7 +900,6 @@ section{
 
 .checkout-orders form .flex .inputBox .box{
    width: 100%;
-   border:var(--border);
    border-radius: .5rem;
    font-size: 1.8rem;
    color:var(--black);
@@ -924,7 +923,6 @@ section{
 .orders .box-container .box{
    padding:1rem 2rem;
    flex:1 1 40rem;
-   border:var(--border);
    background-color: var(--white);
    box-shadow: var(--box-shadow);
    border-radius: .5rem;
@@ -984,7 +982,7 @@ section{
 .footer .credit{
    text-align: center;
    padding: 2.5rem 2rem;
-   border-top: var(--border);
+   border-top: 1px solid #aaaaaa;
    font-size: 2rem;
    color:var(--black);
 }

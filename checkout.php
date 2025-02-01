@@ -10,7 +10,6 @@ if(isset($_SESSION['user_id'])){
    exit;
 }
 
-// PayPal Configuration
 $paypal_client_id = 'AShRyvPUHnPOyBZuk2-qlkdiglDjMkMTQMdM1hpcJKNWfC1YAbVYN0eof5lNvdnGigCu-eZqiPizOZwc';
 $is_sandbox = true;
 

@@ -15,7 +15,7 @@
 
    <section class="flex">
 
-      <a href="../admin/dashboard.php" class="logo">Admin<span>.</span></a>
+      <a href="../admin/dashboard.php" class="logo"><img src="../images/logo.png" alt="">Admin<span>.</span></a>
 
       <nav class="navbar">
          <a href="../admin/dashboard.php">Home</a>
