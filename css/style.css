@@ -264,6 +264,7 @@ section{
    height: 40rem;
    width: 100%;
    object-fit: contain;
+   cursor: pointer;
 }
 
 .home-bg .home .slide .content{
