@@ -4,8 +4,7 @@
 
       <div class="box">
          <a href="home.php"> <i class="fas fa-angle-right"></i> Home</a>
-         <a href="shop.php"> <i class="fas fa-angle-right"></i> Products</a>
-         <a href="orders.php"> <i class="fas fa-angle-right"></i> Orders</a>
+         <a href="shop.php"> <i class="fas fa-angle-right"></i> Shop</a>
          <a href="contact.php"> <i class="fas fa-angle-right"></i> Contact</a>
       </div>
 

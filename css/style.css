@@ -99,34 +99,34 @@ section{
    gap:1rem;
 }
 
-.message{
-   position: sticky;
-   top:0;
-   max-width: 1200px;
-   margin:0 auto;
-   background-color: var(--light-bg);
-   padding:2rem;
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-   gap:1.5rem;
-   z-index: 1100;
+.message {
+   position: relative;
+   background: #ffdbdb;
+   color: #d8000c;
+   padding: 10px 15px;
+   border-left: 5px solid #d8000c;
+   margin: 10px 0;
+   border-radius: 5px;
+   opacity: 1;
+   transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+   transform: translateY(0);
 }
 
-.message span{
-   font-size: 2rem;
-   color:var(--black);
-}
-
-.message i{
+.message i {
+   position: absolute;
+   top: 50%;
+   right: 10px;
+   transform: translateY(-50%);
    cursor: pointer;
-   color:var(--red);
-   font-size: 2.5rem;
+   color: #d8000c;
 }
 
-.message i:hover{
-   color:var(--black);
+.message.hide {
+   opacity: 0;
+   transform: translateY(-10px);
+   pointer-events: none;
 }
+
 
 .empty{
    padding:1.5rem;
@@ -193,7 +193,8 @@ section{
 
 .header .flex .navbar a:hover{
    color:var(--main-color);
-   text-decoration: underline;
+   border-bottom: 2px solid #007bff;
+   width: fit-content;
 }
 
 
@@ -251,7 +252,6 @@ section{
    align-items: center;
    flex-wrap: wrap;
    gap:1.5rem;
-   padding-bottom: 6rem;
    padding-top: 2rem;
    user-select: none;
 }

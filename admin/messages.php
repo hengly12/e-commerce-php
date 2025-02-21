@@ -34,9 +34,12 @@ if(isset($_GET['delete'])){
 </head>
 <body>
 
+
+<div class="flex-dash">
+   
 <?php include '../components/admin_header.php'; ?>
 
-<section class="contacts">
+<section class="contacts flex-col">
 
 <h1 class="heading">messages</h1>
 
@@ -66,17 +69,7 @@ if(isset($_GET['delete'])){
 </div>
 
 </section>
-
-
-
-
-
-
-
-
-
-
-
+</div>
 
 <script src="../js/admin_script.js"></script>
    

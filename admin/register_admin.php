@@ -30,6 +30,7 @@ if(isset($_POST['submit'])){
       }else{
          $insert_admin = $conn->prepare("INSERT INTO `admins`(name, password) VALUES(?,?)");
          $insert_admin->execute([$name, $cpass]);
+         header('location:admin_accounts.php');
          $message[] = 'new admin registered successfully!';
       }
    }

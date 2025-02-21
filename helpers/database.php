@@ -1,88 +1,102 @@
-<?php	
-/***
- Database Main Class
-*/
-	class Database
-	{
-		public $host   = DB_HOST;
-		public $user   = DB_USER;
-		public $pass   = DB_PASS;
-		public $dbname = DB_NAME;		
-		
-		public $link;
-		public $error;
+<?php
+class Database {
+    private $host   = DB_HOST;
+    private $user   = DB_USER;
+    private $pass   = DB_PASS;
+    private $dbname = DB_NAME;
+    
+    private $pdo;
+    private $error;
 
-		function __construct()
-		{
-			$this->connectDB();
-		}
+    public function __construct() {
+        $this->connectDB();
+    }
 
-		private function connectDB()
-		{
-			$this->link = new mysqli( $this->host, $this->user, $this->pass, $this->dbname );
-			if ( !$this->link ) 
-			{
-				$this->error ="Connection fail".$this->link->connect_error;
-				return false;
-			}
-		}
+    private function connectDB() {
+        try {
+            $dsn = "mysql:host=" . $this->host . ";dbname=" . $this->dbname;
+            $options = array(
+                PDO::ATTR_PERSISTENT => true,
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+            );
+            
+            $this->pdo = new PDO($dsn, $this->user, $this->pass, $options);
+        } catch(PDOException $e) {
+            $this->error = "Connection failed: " . $e->getMessage();
+            return false;
+        }
+    }
 
+    public function select($query, $params = []) {
+        try {
+            $stmt = $this->pdo->prepare($query);
+            $stmt->execute($params);
+            
+            if($stmt->rowCount() > 0) {
+                return $stmt;
+            } else {
+                return false;
+            }
+        } catch(PDOException $e) {
+            $this->error = $e->getMessage();
+            return false;
+        }
+    }
 
-		// Select or Read data			
-		public function select($query)
-		{
-			$result = $this->link->query($query) or die($this->link->error.__LINE__ );
-			if( $result->num_rows > 0)
-			{
-				return $result;
-			} 
-			else 
-			{
-			 	return false;
-			}
-		}
-		
-		// Insert data
-		public function insert($query)
-		{
-			$insert_row = $this->link->query($query) or die($this->link->error.__LINE__);
-			if($insert_row){
-				return $insert_row;
-			} 
-			else 
-			{
-				return FALSE;
-			}
-	  	}
-		  
-	    // Update data
-	  	public function update($query)
-	  	{
-			$update_row = $this->link->query($query) or die($this->link->error.__LINE__);
-			if($update_row)
-			{
-				return $update_row;
-			} 
-			else 
-			{
-				return FALSE;
-			}
-	  	}
-	  
-	  // Delete data
-	   public function delete($query)
-	   {
-			$delete_row = $this->link->query($query) or die($this->link->error.__LINE__);
-			if($delete_row)
-			{
-				return $delete_row;
-			} 
-			else 
-			{
-				return FALSE;
-			}
-	  	}
+    public function insert($query, $params = []) {
+        try {
+            $stmt = $this->pdo->prepare($query);
+            $result = $stmt->execute($params);
+            
+            if($result) {
+                return $stmt;
+            } else {
+                return false;
+            }
+        } catch(PDOException $e) {
+            $this->error = $e->getMessage();
+            return false;
+        }
+    }
 
-	}	
+    public function update($query, $params = []) {
+        try {
+            $stmt = $this->pdo->prepare($query);
+            $result = $stmt->execute($params);
+            
+            if($result) {
+                return $stmt;
+            } else {
+                return false;
+            }
+        } catch(PDOException $e) {
+            $this->error = $e->getMessage();
+            return false;
+        }
+    }
 
- ?>
+    public function delete($query, $params = []) {
+        try {
+            $stmt = $this->pdo->prepare($query);
+            $result = $stmt->execute($params);
+            
+            if($result) {
+                return $stmt;
+            } else {
+                return false;
+            }
+        } catch(PDOException $e) {
+            $this->error = $e->getMessage();
+            return false;
+        }
+    }
+
+    public function lastInsertId() {
+        return $this->pdo->lastInsertId();
+    }
+
+    public function getError() {
+        return $this->error;
+    }
+}
+?>

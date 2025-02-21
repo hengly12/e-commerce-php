@@ -49,9 +49,8 @@ body{
 }
 
 section{
-   padding:2rem;
-   max-width: 1200px;
    margin:0 auto;
+   display: flex;
 }
 
 .heading{
@@ -210,9 +209,25 @@ section{
 
 .header .flex{
    display: flex;
-   align-items: center;
    justify-content: space-between;
    position: relative;
+   flex-direction: column;
+   height: calc(100vh - 3px);
+   width: 280px;
+   padding: 10px 0;
+}
+
+.flex-col{
+   flex-direction: column;
+}
+
+.flex-dash{
+   display: flex;
+}
+
+.navbar{
+   display: flex;
+   flex-direction: column;
 }
 
 .header .flex .logo{
@@ -238,13 +253,20 @@ section{
    margin:0 1rem;
    font-size: 2rem;
    color:var(--black);
+   padding: 12px 10px;
+   text-decoration: none;
 }
 
 .header .flex .navbar a:hover{
    color:var(--main-color);
-   text-decoration: underline;
+   background-color: #c3cad0;
+   border-radius: 5px;
 }
-
+.icons{
+   display: flex;
+   justify-content: flex-end;
+   padding: 0 10px;
+}
 .header .flex .icons div{
    margin-left: 1.7rem;
    font-size: 2.5rem;
@@ -261,7 +283,6 @@ section{
 
 .header .flex .profile{
    position: absolute;
-   top:120%; right:2rem;
    background-color: var(--white);
    border-radius: .5rem;
    box-shadow: var(--box-shadow);
@@ -270,6 +291,8 @@ section{
    padding-top: 1.2rem;
    display: none;
    animation:fadeIn .2s linear;
+   bottom: 5px;
+   left: 361px;
 }
 
 .header .flex .profile.active{
