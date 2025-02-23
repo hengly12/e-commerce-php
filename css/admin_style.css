@@ -58,7 +58,7 @@ section{
    color:var(--black);
    margin-bottom: 2rem;
    text-align: center;
-   text-transform: uppercase;
+   text-transform: capitalize;
 }
 
 .btn,
@@ -99,33 +99,115 @@ section{
    gap:1rem;
 }
 
-.message{
-   position: sticky;
-   top:0;
-   max-width: 1200px;
-   margin:0 auto;
-   background-color: var(--light-bg);
-   padding:2rem;
+.message-container {
+   position: fixed;
+   top: 120px;
+   right: 20px;
+   z-index: 1000;
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+}
+
+.message {
+   min-width: 300px;
+   max-width: 400px;
+   background: #fff;
+   padding: 1rem 2rem;
+   border-radius: 8px;
+   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
    display: flex;
    align-items: center;
    justify-content: space-between;
-   gap:1.5rem;
-   z-index: 1100;
+   gap: 1rem;
+   animation: slideIn 0.3s ease-out;
 }
 
-.message span{
-   font-size: 2rem;
-   color:var(--black);
+.message--success {
+   border-left: 4px solid #2ecc71;
+   background: #f0fff4;
 }
 
-.message i{
+.message--error {
+   border-left: 4px solid #e74c3c;
+   background: #fff5f5;
+}
+
+.message--warning {
+   border-left: 4px solid #f1c40f;
+   background: #fffff0;
+}
+
+.message--info {
+   border-left: 4px solid #3498db;
+   background: #f0f7ff;
+}
+
+.message__content {
+   display: flex;
+   align-items: center;
+   gap: 12px;
+   color: #333;
+   font-size: 1.1rem;
+}
+
+.message__icon {
+   font-size: 1.2rem;
+}
+
+.message--success .message__icon {
+   color: #2ecc71;
+}
+
+.message--error .message__icon {
+   color: #e74c3c;
+}
+
+.message--warning .message__icon {
+   color: #f1c40f;
+}
+
+.message--info .message__icon {
+   color: #3498db;
+}
+
+.message__close {
    cursor: pointer;
-   color:var(--red);
-   font-size: 2.5rem;
+   color: #666;
+   transition: color 0.2s ease;
+   padding: 4px;
+   border-radius: 4px;
 }
 
-.message i:hover{
-   color:var(--black);
+.message__close:hover {
+   color: #e74c3c;
+   background: rgba(231, 76, 60, 0.1);
+}
+
+@keyframes slideIn {
+   from {
+       transform: translateX(100%);
+       opacity: 0;
+   }
+   to {
+       transform: translateX(0);
+       opacity: 1;
+   }
+}
+
+@keyframes fadeOut {
+   from {
+       transform: translateX(0);
+       opacity: 1;
+   }
+   to {
+       transform: translateX(100%);
+       opacity: 0;
+   }
+}
+
+.message--closing {
+   animation: fadeOut 0.3s ease-out forwards;
 }
 
 .empty{
@@ -172,7 +254,7 @@ section{
 }
 
 .form-container form h3{
-   text-transform: uppercase;
+   text-transform: capitalize;
    color:var(--black);
    margin-bottom: 1rem;
    font-size: 2.5rem;

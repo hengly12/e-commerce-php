@@ -36,17 +36,6 @@ if(!isset($admin_id)){
 
 </section>
 
-
-
-
-
-
-
-
-
-
-
-
 <script src="../js/admin_script.js"></script>
    
 </body>

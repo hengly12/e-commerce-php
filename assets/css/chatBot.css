@@ -26,7 +26,7 @@
     bottom: 82px;
 }
 .chat-screen .chat-header {
-    background-image: var(--primary-color);
+    background: #007BFF;
     border-radius: 15px 15px 0 0;
     padding: 15px;
     display: block;
@@ -74,7 +74,7 @@
     border-radius: 30px;
 }
 .chat-screen .chat-mail button {
-    background-image: var(--primary-color);
+    background: #007BFF;
     border: none;
     padding: 0.58rem 1.25rem;
     transition: transform 0.5s ease;

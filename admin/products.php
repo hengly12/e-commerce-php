@@ -203,7 +203,7 @@ try {
             <div class="box">
                 <img src="../uploaded_img/<?= htmlspecialchars($product['image_01']); ?>" alt="">
                 <div class="name"><?= htmlspecialchars($product['name']); ?></div>
-                <div class="price">$<?= htmlspecialchars($product['price']); ?>/-</div>
+                <div class="price">$<?= htmlspecialchars($product['price']); ?></div>
                 <div class="details"><?= htmlspecialchars($product['details']); ?></div>
                 <div class="flex-btn">
                     <a href="update_product.php?update=<?= $product['id']; ?>" class="option-btn">Update</a>

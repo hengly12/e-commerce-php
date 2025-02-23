@@ -1,16 +1,33 @@
 <?php
 if(isset($message)) {
+    echo '<div class="message-container">';
     foreach($message as $msg) {
+        $type = 'info';
+        if (stripos($msg, 'success') !== false) {
+            $type = 'success';
+            $icon = 'check-circle';
+        } elseif (stripos($msg, 'error') !== false || stripos($msg, 'already exist') !== false || stripos($msg, 'not matched') !== false) {
+            $type = 'error';
+            $icon = 'exclamation-circle';
+        } elseif (stripos($msg, 'warning') !== false) {
+            $type = 'warning';
+            $icon = 'exclamation-triangle';
+        } else {
+            $icon = 'info-circle';
+        }
+        
         echo '
-        <div class="message">
-            <span>'.htmlspecialchars($msg).'</span>
-            <i class="fas fa-times" onclick="closeMessage(this);"></i>
-        </div>
-        ';
+        <div class="message message--' . $type . '">
+            <div class="message__content">
+                <i class="fas fa-' . $icon . ' message__icon"></i>
+                <span>' . htmlspecialchars($msg) . '</span>
+            </div>
+            <i class="fas fa-times message__close" onclick="closeMessage(this);"></i>
+        </div>';
     }
+    echo '</div>';
 }
 
-// Get the current page name
 $current_page = basename($_SERVER['PHP_SELF']);
 
 try {
@@ -86,13 +103,8 @@ try {
         width: fit-content;
     }
 
-    .message {
-        transition: opacity 0.5s ease-in-out;
-    }
 
-    .message.hide {
-        opacity: 0;
-    }
+
 </style>
 
 <script>

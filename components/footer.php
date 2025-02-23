@@ -16,7 +16,6 @@
 
       <div class="box">
          <a href="tel:1234567890"><i class="fas fa-phone"></i> +123 456 7899</a>
-         <a href="tel:11122233333"><i class="fas fa-phone"></i> +123 456 7899</a>
          <a href="#"><i class="fas fa-envelope"></i> admin@gmail.com</a>
          <a href="#"><i class="fas fa-map-marker-alt"></i> Phnom Penh </a>
       </div>

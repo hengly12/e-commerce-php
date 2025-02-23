@@ -97,10 +97,23 @@ if(isset($_POST['update'])){
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
    <link rel="stylesheet" href="../css/admin_style.css">
-
+   <style>
+      .flex-dashboard{
+         display: flex;
+      }
+      .update-product{
+         height: 100vh;
+         overflow: auto;
+         display: flex;
+         flex-direction: column;
+         width: 100%;
+      }
+   </style>
 </head>
 <body>
 
+
+<div class="flex-dashboard">
 <?php include '../components/admin_header.php'; ?>
 
 <section class="update-product">
@@ -155,17 +168,7 @@ if(isset($_POST['update'])){
    ?>
 
 </section>
-
-
-
-
-
-
-
-
-
-
-
+</div>
 
 <script src="../js/admin_script.js"></script>
    
