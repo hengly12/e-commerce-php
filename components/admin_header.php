@@ -50,6 +50,8 @@ $current_page = basename($_SERVER['PHP_SELF']);
          text-decoration: none;
          color: black;
          padding: 10px;
+         width: 100%;
+         margin: 0;
       }
 
       .header .flex .navbar a.active {
@@ -57,6 +59,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
          background: #007bff;
          border-radius: 5px;
          font-weight: bold;
+         width: 100%;
       }
    </style>
 </head>

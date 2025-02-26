@@ -13,7 +13,6 @@ if(isset($_SESSION['user_id'])){
 $paypal_client_id = 'AShRyvPUHnPOyBZuk2-qlkdiglDjMkMTQMdM1hpcJKNWfC1YAbVYN0eof5lNvdnGigCu-eZqiPizOZwc';
 $is_sandbox = true;
 
-// Rest of the PHP logic remains the same...
 ?>
 
 <!DOCTYPE html>
