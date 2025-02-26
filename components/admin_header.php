@@ -68,6 +68,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
 <header class="header">
 <section class="flex">
       <nav class="navbar">
+        <a href="slide.php" class="<?= ($current_page == 'slide.php') ? 'active' : ''; ?>">Slide</a>
          <a href="products.php" class="<?= ($current_page == 'products.php') ? 'active' : ''; ?>">Products</a>
          <a href="admin_accounts.php" class="<?= ($current_page == 'admin_accounts.php') ? 'active' : ''; ?>">Create User</a>
          <a href="messages.php" class="<?= ($current_page == 'messages.php') ? 'active' : ''; ?>">Contact</a>

@@ -21,12 +21,10 @@ if(isset($_POST['add_product'])) {
         if($check_product->fetchColumn() > 0) {
             $message[] = 'Product name already exists!';
         } else {
-            // Handle image uploads as an array
             $images = [];
             $max_size = 10 * 1024 * 1024; 
             $image_count = count($_FILES['product_images']['name']);
             
-            // Process up to 3 images from the array
             for($i = 0; $i < min($image_count, 3); $i++) {
                 if($_FILES['product_images']['error'][$i] == 0) {
                     if($_FILES['product_images']['size'][$i] > $max_size) {
@@ -49,7 +47,6 @@ if(isset($_POST['add_product'])) {
                 }
             }
             
-            // Ensure all 3 image slots have a value (even if empty)
             for($i = 1; $i <= 3; $i++) {
                 $image_key = "image_0$i";
                 if(!isset($images[$image_key])) {
@@ -128,58 +125,52 @@ try {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products Management</title>
-
-    <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Admin CSS -->
     <link rel="stylesheet" href="../css/admin_style.css">
     
     <style>
         body {
-            font-size: 18px; /* Larger base font size */
+            font-size: 18px; 
         }
         
         .btn {
-            font-size: 1.1rem; /* Larger button text */
+            font-size: 1.1rem; 
             padding: 0.6rem 1.2rem;
         }
         
         .form-control {
-            font-size: 1.1rem; /* Larger form inputs */
+            font-size: 1.1rem; 
             padding: 0.6rem 0.8rem;
         }
         
         .form-label {
-            font-size: 1.2rem; /* Larger form labels */
+            font-size: 1.2rem; 
             font-weight: 500;
         }
         
         .modal-title {
-            font-size: 1.6rem; /* Larger modal title */
+            font-size: 1.6rem; 
         }
         
         .heading {
-            font-size: 2.2rem; /* Larger section headings */
+            font-size: 2.2rem; 
         }
         
         .box .name {
-            font-size: 1.4rem; /* Larger product name */
+            font-size: 1.4rem; 
         }
         
         .box .price {
-            font-size: 1.3rem; /* Larger product price */
+            font-size: 1.3rem; 
         }
         
         .box .details {
-            font-size: 1.1rem; /* Larger product details */
+            font-size: 1.1rem; 
         }
         
         .image-preview {
-            width: 180px; /* Larger preview box */
+            width: 180px; 
             height: 180px;
             border: 2px dashed #ccc;
             margin-top: 10px;
