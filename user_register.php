@@ -52,12 +52,26 @@ if(isset($_POST['submit'])){
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
    <link rel="stylesheet" href="css/style.css">
-
+   <style>
+      .form{
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         height: 100vh;
+         width: 100%;
+         background: linear-gradient(135deg, #6e8efb, #a777e3);
+      }
+      .box:focus {
+         outline: none;
+         border-color: var(--primary-color);
+         box-shadow: 0 0 0 3px rgba(78, 115, 223, 0.25);
+      }
+   </style>
 </head>
 <body>
    
 
-<section class="form-container">
+<section class="form-container form">
 
    <form action="" method="post">
       <h3>Register</h3>

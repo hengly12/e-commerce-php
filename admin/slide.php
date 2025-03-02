@@ -82,7 +82,7 @@ class SliderManager {
 }
 
 $sliderManager = new SliderManager($conn);
-$message = '';
+$messages = '';
 
 if(isset($_POST['add_slide'])) {
     $title = $_POST['title'];
@@ -94,12 +94,12 @@ if(isset($_POST['add_slide'])) {
     
     if(move_uploaded_file($image_tmp_name, $image_folder)) {
         if($sliderManager->addSlide($title, $subtitle, $image)) {
-            $message = 'New slide added successfully!';
+            $messages = 'New slide added successfully!';
         } else {
-            $message = 'Failed to add slide to database!';
+            $messages = 'Failed to add slide to database!';
         }
     } else {
-        $message = 'Failed to upload image!';
+        $messages = 'Failed to upload image!';
     }
 }
 
@@ -115,18 +115,18 @@ if(isset($_POST['update_slide'])) {
         
         if(move_uploaded_file($image_tmp_name, $image_folder)) {
             if($sliderManager->updateSlide($id, $title, $subtitle, $image)) {
-                $message = 'Slide updated successfully!';
+                $messages = 'Slide updated successfully!';
             } else {
-                $message = 'Failed to update slide in database!';
+                $messages = 'Failed to update slide in database!';
             }
         } else {
-            $message = 'Failed to upload new image!';
+            $messages = 'Failed to upload new image!';
         }
     } else {
         if($sliderManager->updateSlide($id, $title, $subtitle)) {
-            $message = 'Slide updated successfully!';
+            $messages = 'Slide updated successfully!';
         } else {
-            $message = 'Failed to update slide in database!';
+            $messages = 'Failed to update slide in database!';
         }
     }
 }
@@ -189,7 +189,13 @@ $slides = $sliderManager->getSlides();
             font-size: 16px;
             color: #666;
         }
-        
+        .color-delete{
+            background : #E74C3C !important;
+        }
+        .update{
+            background : #92A6BB !important;
+            margin-right: 10px;
+        }
         .modal-lg {
             max-width: 900px;
         }
@@ -201,6 +207,10 @@ $slides = $sliderManager->getSlides();
             border: 1px solid #ddd;
             padding: 3px;
         }
+        .card{
+            border: none !important;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
 <body>
@@ -210,34 +220,32 @@ $slides = $sliderManager->getSlides();
     <div class="container mt-4">
         <h1>Manage Slider</h1>
         
-        <?php if(!empty($message)): ?>
-            <div class="alert alert-success"><?= $message; ?></div>
+        <?php if(!empty($messages)): ?>
+            <div class="alert alert-success"><?= $messages; ?></div>
         <?php endif; ?>
         
-        <!-- Button to trigger modal -->
         <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#addSlideModal">
             Add New Slide
         </button>
         
-        <!-- Display Slides -->
         <div class="row">
             <?php if(count($slides) > 0): ?>
                 <?php foreach($slides as $slide): ?>
                     <div class="col-md-4 mb-4">
                         <div class="card">
-                            <img src="../uploaded_img/<?= $slide['image']; ?>" class="card-img-top" alt="Slide Image" style="height: 200px; object-fit: cover;">
+                            <img src="../uploaded_img/<?= $slide['image']; ?>" class="card-img-top" alt="Slide Image" style="height: 200px; object-fit: contain;">
                             <div class="card-body">
                                 <h5 class="card-title"><?= $slide['title']; ?></h5>
                                 <p class="card-text"><?= $slide['subtitle']; ?></p>
                                 <div class="d-flex justify-content-between">
-                                    <button type="button" class="btn btn-warning edit-btn" 
+                                    <button type="button" class="btn edit-btn update" 
                                             data-id="<?= $slide['id']; ?>"
                                             data-title="<?= $slide['title']; ?>"
                                             data-subtitle="<?= $slide['subtitle']; ?>"
                                             data-image="<?= $slide['image']; ?>">
-                                        Edit
+                                        Update
                                     </button>
-                                    <a href="slide.php?delete=<?= $slide['id']; ?>" class="btn btn-danger" onclick="return confirm('Delete this slide?');">Delete</a>
+                                    <a href="slide.php?delete=<?= $slide['id']; ?>" class="btn color-delete" onclick="return confirm('Delete this slide?');">Delete</a>
                                 </div>
                             </div>
                         </div>

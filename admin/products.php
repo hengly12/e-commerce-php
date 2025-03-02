@@ -136,7 +136,7 @@ try {
         
         .btn {
             font-size: 1.1rem; 
-            padding: 0.6rem 1.2rem;
+            padding: 1.3rem 1.2rem;
         }
         
         .form-control {

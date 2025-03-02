@@ -452,12 +452,6 @@ section{
    gap:1rem;
 }
 
-.header .flex #user-btn{
-   padding: 12px;
-   border-radius: 50%;
-   background-color: var(--light-bg);
-}
-
 .home-products .slide .flex .qty{
    width: 7rem;
    padding:1rem;
