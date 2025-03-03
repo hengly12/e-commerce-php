@@ -208,23 +208,23 @@ if(isset($_POST['submit'])){
    <section class="form-container">
         <form action="" method="post">
             <h3>register user account</h3>
-            <input type="text" name="name" required placeholder="enter your username" maxlength="20" class="box" oninput="this.value = this.value.replace(/\s/g, '')">
+            <input type="text" name="name" required placeholder="Username" maxlength="20" class="box" oninput="this.value = this.value.replace(/\s/g, '')">
             
             <div class="password-container">
-                <input type="password" name="pass" required placeholder="enter your password" maxlength="20" class="box" oninput="this.value = this.value.replace(/\s/g, '')">
+                <input type="password" name="pass" required placeholder="Password" maxlength="20" class="box" oninput="this.value = this.value.replace(/\s/g, '')">
                 <button type="button" class="password-toggle" onclick="togglePassword('input[name=pass]', '#passToggle')">
                     <i id="passToggle" class="fas fa-eye"></i>
                 </button>
             </div>
             
             <div class="password-container">
-                <input type="password" name="cpass" required placeholder="confirm your password" maxlength="20" class="box" oninput="this.value = this.value.replace(/\s/g, '')">
+                <input type="password" name="cpass" required placeholder="Confirm Password" maxlength="20" class="box" oninput="this.value = this.value.replace(/\s/g, '')">
                 <button type="button" class="password-toggle" onclick="togglePassword('input[name=cpass]', '#cpassToggle')">
                     <i id="cpassToggle" class="fas fa-eye"></i>
                 </button>
             </div>
             
-            <input type="submit" value="register now" class="btn" name="submit">
+            <input type="submit" value="Save" class="btn" name="submit">
         </form>
     </section>
 

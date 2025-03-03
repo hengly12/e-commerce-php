@@ -19,7 +19,7 @@ if(isset($_POST['add_product'])) {
         $check_product->execute([$name]);
         
         if($check_product->fetchColumn() > 0) {
-            $message[] = 'Product name already exists!';
+            $messages[] = 'Product name already exists!';
         } else {
             $images = [];
             $max_size = 10 * 1024 * 1024; 
@@ -67,10 +67,10 @@ if(isset($_POST['add_product'])) {
                 $images['image_03']
             ]);
 
-            $message[] = 'New product added successfully!';
+            $messages[] = 'New product added successfully!';
         }
     } catch(Exception $e) {
-        $message[] = $e->getMessage();
+        $messages[] = $e->getMessages();
     }
 }
 
@@ -104,7 +104,7 @@ if(isset($_GET['delete'])) {
         exit();
     } catch(Exception $e) {
         $conn->rollBack();
-        $message[] = 'Error deleting product: ' . $e->getMessage();
+        $messages[] = 'Error deleting product: ' . $e->getMessage();
     }
 }
 
@@ -113,7 +113,7 @@ try {
     $select_products->execute();
     $products = $select_products->fetchAll(PDO::FETCH_ASSOC);
 } catch(PDOException $e) {
-    $message[] = 'Error fetching products: ' . $e->getMessage();
+    $messages[] = 'Error fetching products: ' . $e->getMessage();
     $products = [];
 }
 ?>
@@ -214,6 +214,100 @@ try {
         .alert {
             font-size: 1.2rem;
         }
+
+        .products-management {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .heading {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .btn-add {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 4px;
+            max-width: 145px;
+        }
+
+        .table-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .products-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .products-table th {
+            background-color: #f9f9f9;
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+            color: #555;
+            border-bottom: 1px solid #eee;
+        }
+
+        .products-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            vertical-align: middle;
+        }
+
+        .product-thumbnail {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .actions-cell {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-update {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .btn-delete {
+            background-color: #F44336;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .empty-messages {
+            padding: 20px;
+            text-align: center;
+            color: #777;
+        }
     </style>
 </head>
 <body>
@@ -223,8 +317,8 @@ try {
 
     <div class="scroll-content">
         <?php
-        if(isset($message)){
-            foreach($message as $msg){
+        if(isset($messages)){
+            foreach($messages as $msg){
                 echo '<div class="alert alert-primary alert-dismissible fade show" role="alert">
                     '.$msg.'
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -232,38 +326,65 @@ try {
             }
         }
         ?>
-
-        <section class="show-products flex-col">
+    <section class="products-management">
+        <div class="header-container">
             <h1 class="heading">Products Management</h1>
-            
-            <!-- Add Product Button -->
-            <div class="text-center add-product-btn">
-                <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#addProductModal">
-                    <i class="fas fa-plus"></i> Add New Product
-                </button>
-            </div>
-
-            <div class="box-container">
-                <?php if(!empty($products)): ?>
-                    <?php foreach($products as $product): ?>
-                    <div class="box">
-                        <img src="../uploaded_img/<?= htmlspecialchars($product['image_01']); ?>" alt="">
-                        <div class="name"><?= htmlspecialchars($product['name']); ?></div>
-                        <div class="price">$<?= htmlspecialchars($product['price']); ?></div>
-                        <div class="details"><?= htmlspecialchars($product['details']); ?></div>
-                        <div class="flex-btn">
-                            <a href="update_product.php?update=<?= $product['id']; ?>" class="option-btn">Update</a>
-                            <a href="products.php?delete=<?= $product['id']; ?>" 
-                               class="delete-btn" 
-                               onclick="return confirm('Delete this product?');">Delete</a>
-                        </div>
-                    </div>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <p class="empty">No products added yet!</p>
-                <?php endif; ?>
-            </div>
-        </section>
+            <button type="button" class="btn btn-success btn-add" data-bs-toggle="modal" data-bs-target="#addProductModal">
+                <i class="fas fa-plus"></i> Add New Product
+            </button>
+        </div>
+        
+        <div class="table-container">
+            <?php if(!empty($products)): ?>
+                <table class="products-table">
+                    <thead>
+                        <tr>
+                            <th>PRODUCT ID</th>
+                            <th>IMAGE</th>
+                            <th>NAME</th>
+                            <th>PRICE</th>
+                            <th>ACTIONS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php 
+                        // Sort products in descending order by ID
+                        $productsDesc = $products;
+                        usort($productsDesc, function($a, $b) {
+                            return $b['id'] - $a['id']; // Sort by ID in descending order
+                        });
+                        
+                        foreach($productsDesc as $product): 
+                        ?>
+                        <tr>
+                            <td><?= $product['id']; ?></td>
+                            <td>
+                                <img src="../uploaded_img/<?= htmlspecialchars($product['image_01']); ?>" 
+                                    alt="<?= htmlspecialchars($product['name']); ?>" 
+                                    class="product-thumbnail">
+                            </td>
+                            <td><?= htmlspecialchars($product['name']); ?></td>
+                            <td>$<?= htmlspecialchars($product['price']); ?></td>
+                            <td class="actions-cell">
+                                <a href="update_product.php?update=<?= $product['id']; ?>" 
+                                class="btn btn-update">
+                                    <i class="fas fa-edit"></i> Update
+                                </a>
+                                <a href="products.php?delete=<?= $product['id']; ?>"
+                                class="btn btn-delete"
+                                onclick="return confirm('Delete this product?');">
+                                    <i class="fas fa-trash"></i> Delete
+                                </a>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            <?php else: ?>
+                <p class="empty-messages">No products added yet!</p>
+            <?php endif; ?>
+        </div>
+    </section>
     </div>
 </div>
 
@@ -299,7 +420,6 @@ try {
                         <div class="text-muted mt-1">You can select multiple images at once (max 3)</div>
                         
                         <div class="preview-container" id="imagesPreviewContainer">
-                            <!-- Image previews will be inserted here -->
                         </div>
                     </div>
                     
@@ -356,7 +476,7 @@ function previewImages(input) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    <?php if(isset($message) && in_array('New product added successfully!', $message)): ?>
+    <?php if(isset($messages) && in_array('New product added successfully!', $messages)): ?>
     const addProductModal = document.getElementById('addProductModal');
     const modal = bootstrap.Modal.getInstance(addProductModal);
     if (modal) {

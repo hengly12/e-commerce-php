@@ -194,7 +194,7 @@ $slides = $sliderManager->getSlides();
             background : #E74C3C !important;
         }
         .update{
-            background : #92A6BB !important;
+            background : #007BFF !important;
             margin-right: 10px;
         }
         .modal-lg {
