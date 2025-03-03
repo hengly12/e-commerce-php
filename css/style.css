@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root{
    --main-color:#1A73E8;
@@ -13,7 +13,7 @@
 }
 
 *{
-   font-family: 'Nunito', sans-serif;
+   font-family: "Roboto", sans-serif;
    margin:0; padding:0;
    box-sizing: border-box;
    outline: none; border:none;

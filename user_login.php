@@ -52,6 +52,7 @@ if(isset($_POST['submit'])){
          height: 100vh;
          width: 100%;
          background: linear-gradient(135deg, #6e8efb, #a777e3);
+         max-width: 100%;
       }
       .box:focus {
          outline: none;
